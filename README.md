@@ -41,19 +41,24 @@ WebSocket是HTML5一种新的协议(Protocol)。它实现了客户端与服务�
 
 ## 开启API权限    
 
-用户的API权限在网站的基本设置->我的API内获取。点击申请API即可获得，其中apiKey是OKEx提供给API用户的访问密钥，secretKey用于对请求参数签名的私钥。    
+用户的API权限在网站的基本设置->我的API内获取。点击申请API即可获得，其中apiKey是HOTBIT提供给API用户的访问密钥，secretKey用于对请求参数签名的私钥。    
 
 **_注意： 请勿向任何人泄露这两个参数，这两个参数关乎您账号的安全。_**    
      
 ## 参数签名    
 
-用户提交的参数除sign外，都要参与签名。    
+部分用户提交的参数需要参与签名。    
 
 首先，将待签名字符串要求按照参数名进行排序(首先比较所有参数名的第一个字母，按abcd顺序排列，若遇到相同首字母，则看第二个字母，以此类推)。   
 
 例如：对于如下的参数进行签名   
 
-	string[] parameters={"api_key=c821db84-6fbd-11e4-a9e3-c86000d26d7c","symbol=btc_cny","type=buy","price=680","amount=1.0"};     
+string[] parameters={
+	"api_key":"c821db84-6fbd-11e4-a9e3-c86000d26d7c",
+	"id": 123,
+        "method": "balance.query",
+        "params": [1, "BTC"],
+};     
 
 生成待签名的字符串    
 
